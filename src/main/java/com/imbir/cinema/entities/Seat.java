@@ -1,17 +1,15 @@
 package com.imbir.cinema.entities;
 
-import java.io.Serializable;
 
-
-public class Seat implements Serializable {
+public class Seat {
     private int rowNumber;
     private int seatNumber;
     private boolean taken;
 
     public Seat() {
-        int rowNumber = 0;
-        int seatNumber = 0;
-        boolean taken = false;
+        rowNumber = 0;
+        seatNumber = 0;
+        taken = false;
     }
 
     public Seat(int rowNumber, int seatNumber) {
@@ -24,8 +22,16 @@ public class Seat implements Serializable {
         return rowNumber;
     }
 
+    public void setRowNumber(int rowNumber) {
+        this.rowNumber = rowNumber;
+    }
+
     public int getSeatNumber() {
         return seatNumber;
+    }
+
+    public void setSeatNumber(int seatNumber) {
+        this.seatNumber = seatNumber;
     }
 
     public boolean isTaken() {
