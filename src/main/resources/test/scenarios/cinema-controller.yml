@@ -1,0 +1,36 @@
+Scenario(CREATE_CINEMA):
+  interactions:
+
+    - description: create cinema # POST /cinema
+      request:
+        post: /cinema
+        params:
+          name: Cinema 3
+      response:
+        status: 201
+        json:
+          id:
+            - exists: true
+
+    - description: verify cinema has been created # GET /cinema/{cinemaId}
+      request:
+        get: /cinema/${last:id}
+      response:
+        json:
+          name: Cinema 3
+
+Scenario(GET_CINEMA_LIST):
+  fixtures:
+    - cinemas.yml
+  interactions:
+    - description: get cinema list # GET /cinema
+      request:
+        get: /cinema
+      response:
+        status: 200
+        json:
+          size: 2
+          0:
+            name: Cinema 1
+          1:
+            name: Cinema 2

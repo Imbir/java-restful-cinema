@@ -1,0 +1,80 @@
+Scenario(CREATE_HALL):
+  interactions:
+
+    - description: create a cinema # POST /cinema
+      request:
+        post: /cinema
+        params:
+          name: Cinema with a hall
+      response:
+        status: 201
+        json:
+          name: Cinema with a hall
+      assign:
+        cinemaId: id
+
+    - description: create a hall in the cinema # POST /hall/{cinemaId}
+      request:
+        post: /hall/${cinemaId}
+        params:
+          rows: 2
+          rowSeats: 3
+      response:
+        status: 201
+        json:
+          cinemaId: ${cinemaId}
+          hallLayout:
+            size: 6
+      assign:
+        hallId: id
+
+    - description: verify hall has been created # GET /hall/{hallId}
+      request:
+        get: /hall/${hallId}
+      response:
+        status: 200
+        json:
+          cinemaId: ${cinemaId}
+          hallLayout:
+            size: 6
+            <any>:
+              taken: false
+
+    - description: book seats in the hall # PUT /book/{hallId}
+      request:
+        put: /book/${hallId}
+        json:
+          - rowNumber: 1
+            seatNumber: 1
+          - rowNumber: 1
+            seatNumber: 2
+      response:
+        status: 200
+        json:
+          cinemaId: ${cinemaId}
+          hallLayout:
+            0:
+              rowNumber: 1
+              seatNumber: 1
+              taken: true
+            1:
+              rowNumber: 1
+              seatNumber: 2
+              taken: true
+
+Scenario(GET_HALL_LIST):
+  fixtures:
+    - halls.yml
+  interactions:
+    - description: get halls list # GET /hall
+      request:
+        get: /hall
+      response:
+        status: 200
+        json:
+          0:
+            hallLayout:
+              size: 4
+          1:
+            hallLayout:
+              size: 9

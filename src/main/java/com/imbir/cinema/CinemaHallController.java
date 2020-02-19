@@ -33,7 +33,6 @@ public class CinemaHallController extends Controller.Util {
         return hallDao.findBy("cinemaId", new ObjectId(cinemaId));
     }
 
-
     @PostAction("/hall/{cinemaId}")
     public CinemaHall createHall(String cinemaId, int rows, int rowSeats) {
         Cinema cinema = cinemaDao.findById(new ObjectId(cinemaId));
@@ -43,7 +42,6 @@ public class CinemaHallController extends Controller.Util {
 
     @PutAction("/book/{hallId}")
     public CinemaHall bookSeats(String hallId, ArrayList<Seat> booking) {
-        System.out.println(booking);
         CinemaHall hall = hallDao.findById(new ObjectId(hallId));
         notFoundIfNull(hall, "Specified hall not found");
         hall.book(booking);

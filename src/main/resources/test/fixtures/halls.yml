@@ -1,0 +1,57 @@
+com.imbir.cinema.entities.CinemaHall(hall1):
+  hallLayout:
+    - Seat:
+        rowNumber: 1
+        seatNumber: 1
+        taken: false
+    - Seat:
+        rowNumber: 1
+        seatNumber: 2
+        taken: false
+    - Seat:
+        rowNumber: 2
+        seatNumber: 1
+        taken: false
+    - Seat:
+        rowNumber: 2
+        seatNumber: 2
+        taken: false
+
+com.imbir.cinema.entities.CinemaHall(hall2):
+  hallLayout:
+    - Seat:
+        rowNumber: 1
+        seatNumber: 1
+        taken: false
+    - Seat:
+        rowNumber: 1
+        seatNumber: 2
+        taken: false
+    - Seat:
+        rowNumber: 1
+        seatNumber: 3
+        taken: false
+    - Seat:
+        rowNumber: 2
+        seatNumber: 1
+        taken: false
+    - Seat:
+        rowNumber: 2
+        seatNumber: 2
+        taken: false
+    - Seat:
+        rowNumber: 2
+        seatNumber: 3
+        taken: false
+    - Seat:
+        rowNumber: 3
+        seatNumber: 1
+        taken: false
+    - Seat:
+        rowNumber: 3
+        seatNumber: 2
+        taken: false
+    - Seat:
+        rowNumber: 3
+        seatNumber: 3
+        taken: false
